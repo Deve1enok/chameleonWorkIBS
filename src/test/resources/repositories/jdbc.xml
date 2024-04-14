@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DbGears xmlns="http://chameleon.ibs-qa.ru/schema/db">
+    <Connection name="JDBC_H2"
+                url="jdbc:h2:tcp://localhost:9092/mem:testdb;DB_CLOSE_DELAY=-1;user=#{user};password=#{password}"
+                autoCommit="true"
+                driver="org.h2.Driver">
+        <Params>
+            <FieldString name="Логин" locator="user"/>
+            <FieldString name="Пароль" locator="password"/>
+        </Params>
+    </Connection>
+    <Query name="Вывести все данные по таблице" statement="SELECT * FROM food">
+        <Result>
+            <FieldInteger name="№" locator="food_id"/>
+            <FieldString name="Наименование" locator="food_name"/>
+            <FieldString name="Тип" locator="food_type"/>
+            <FieldBoolean name="Экзотический" locator="food_exotic"/>
+        </Result>
+    </Query>
+    <Query name="Вставить данные в таблицу"
+           statement="INSERT INTO food(food_name, food_type, food_exotic) VALUES (:food_name, :food_type, :food_exotic)">
+        <Params>
+            <FieldString name="Наименование" locator="food_name"/>
+            <FieldString name="Тип" locator="food_type"/>
+            <FieldBoolean name="Экзотический" locator="food_exotic"/>
+        </Params>
+    </Query>
+    <Query name="Удаление данных из таблицы по id" statement="DELETE FROM food WHERE food_id = :food_id">
+        <Params>
+            <FieldInteger name="Номер_продукта" locator="food_id"/>
+        </Params>
+    </Query>
+    <Query name="Удаление данных от числа и до числа по id"
+           statement="DELETE FROM food WHERE food_id BETWEEN :food_id AND :food_id2">
+        <Params>
+            <FieldInteger name="Номер_продукта" locator="food_id"/>
+            <FieldInteger name="Номер_продукта2" locator="food_id2"/>
+        </Params>
+    </Query>
+    <Query name="Вставить 10 записей в таблицу"
+           statement="INSERT INTO food(food_name, food_type, food_exotic)
+           VALUES (:food_name, :food_type, :food_exotic),
+           (:food_name2, :food_type2, :food_exotic2),
+           (:food_name3, :food_type3, :food_exotic3),
+           (:food_name4, :food_type4, :food_exotic4),
+           (:food_name5, :food_type5, :food_exotic5),
+           (:food_name6, :food_type6, :food_exotic6),
+           (:food_name7, :food_type7, :food_exotic7),
+           (:food_name8, :food_type8, :food_exotic8),
+           (:food_name9, :food_type9, :food_exotic9),
+           (:food_name10, :food_type10, :food_exotic10)">
+        <Params>
+            <FieldString name="Наименование" locator="food_name"/>
+            <FieldString name="Тип" locator="food_type"/>
+            <FieldBoolean name="Экзотический" locator="food_exotic"/>
+
+            <FieldString name="Наименование2" locator="food_name2"/>
+            <FieldString name="Тип2" locator="food_type2"/>
+            <FieldBoolean name="Экзотический2" locator="food_exotic2"/>
+
+            <FieldString name="Наименование3" locator="food_name3"/>
+            <FieldString name="Тип3" locator="food_type3"/>
+            <FieldBoolean name="Экзотический3" locator="food_exotic3"/>
+
+            <FieldString name="Наименование4" locator="food_name4"/>
+            <FieldString name="Тип4" locator="food_type4"/>
+            <FieldBoolean name="Экзотический4" locator="food_exotic4"/>
+
+            <FieldString name="Наименование5" locator="food_name5"/>
+            <FieldString name="Тип5" locator="food_type5"/>
+            <FieldBoolean name="Экзотический5" locator="food_exotic5"/>
+
+            <FieldString name="Наименование6" locator="food_name6"/>
+            <FieldString name="Тип6" locator="food_type6"/>
+            <FieldBoolean name="Экзотический6" locator="food_exotic6"/>
+
+            <FieldString name="Наименование7" locator="food_name7"/>
+            <FieldString name="Тип7" locator="food_type7"/>
+            <FieldBoolean name="Экзотический7" locator="food_exotic7"/>
+
+            <FieldString name="Наименование8" locator="food_name8"/>
+            <FieldString name="Тип8" locator="food_type8"/>
+            <FieldBoolean name="Экзотический8" locator="food_exotic8"/>
+
+            <FieldString name="Наименование9" locator="food_name9"/>
+            <FieldString name="Тип9" locator="food_type9"/>
+            <FieldBoolean name="Экзотический9" locator="food_exotic9"/>
+
+            <FieldString name="Наименование10" locator="food_name10"/>
+            <FieldString name="Тип10" locator="food_type10"/>
+            <FieldBoolean name="Экзотический10" locator="food_exotic10"/>
+        </Params>
+    </Query>
+</DbGears>
